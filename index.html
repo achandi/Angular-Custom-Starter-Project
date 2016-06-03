@@ -37,7 +37,7 @@
           <h4>Availability:</h4>
           <p>{{candy.quantity}} pieces</p>
           <div class="container"> 
-          Amount to order: <input type="text" ng-model="order" /> {{ order }} pieces
+            Amount to order: <input type="text" ng-model="order" /> {{ order }} pieces at a cost of {{ candy.price * order | currency }}
           </div>
           <h3 id="sold_out" ng-show="candy.quantity === 0"> Sold Out </h3>
            <button ng-show="candy.quantity > 0" ng-click="orderQuantity($index, order)"> Add Candy to Cart </button>

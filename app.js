@@ -89,10 +89,8 @@
 
     $scope.orderQuantity = function(index, order) {
       if ($scope.candies[index].quantity >= order) {
-         $scope.candies[index].quantity -= order;
-      } else { 
-        return "not possible";
-      }
+          $scope.candies[index].quantity -= order;
+      } 
     };
 
     }]);
