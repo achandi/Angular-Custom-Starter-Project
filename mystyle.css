@@ -1,0 +1,57 @@
+#sold_out { 
+
+  color: red;
+/*  margin: 0 0 0 40px;
+  display: inline-block;
+  float: left;*/
+
+
+}
+
+
+
+.likes,
+.dislikes {
+ background: #F65A5B ;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ font-size: 17px;
+ line-height: 30px;
+ min-width: 40px;
+ height: 30px;
+ margin: 0 20px 0 40px;
+ text-align: center;
+ font-weight: 200;
+ transition: background 500ms;
+}
+
+.likes:hover,
+.dislikes:hover {
+ color: #F65A5B ;
+ background: rgba(246, 90, 91, 0.25);
+ transition: background 500ms;
+}
+
+img { 
+  display: inline-block;
+  float: right;
+  height: 150px;
+  width: 150px;
+  margin-right: 70px;
+  margin-top: 15px;
+
+}
+
+h1 { 
+
+text-align: center;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+}
+
+h2 {
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+}
