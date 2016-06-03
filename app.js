@@ -1,12 +1,5 @@
 (function() { 
-
-  var app = angular.module('candyShop', []);
-
- 
-
-  app.controller('ShopController', ['$scope', function($scope){
-
-    $scope.candies = [
+  var MOCK_CANDIES = [
       { 
         type: 'Sour keys',
         price: .05,
@@ -16,7 +9,6 @@
         likes: 0,
         dislikes: 0,
         quantity: 2400
-        
       },
       {
         type: 'Pop Bottles',
@@ -37,7 +29,6 @@
         likes: 0,
         dislikes: 0,
         quantity: 4330
-
       },
       { type: 'Frogs',
         price: .05,
@@ -78,8 +69,13 @@
         dislikes: 0,
         quantity: 0
       },
-
     ];
+  var app = angular.module('candyShop', []);
+  
+  app.controller('ShopController', 
+    ['$scope', function($scope) {
+
+    $scope.candies = MOCK_CANDIES;
 
     $scope.plusOne = function(index) { 
       $scope.candies[index].likes += 1;
@@ -91,20 +87,10 @@
 
     $scope.orderQuantity = function(index, order) {
       if ($scope.candies[index].quantity >= order) {
-          $scope.candies[index].quantity -= order;
-          return order * $scope.candies[index].price;
+        $scope.candies[index].quantity -= order;
+        return order * $scope.candies[index].price;
       } 
     };
-
-    }]);
-
+  }]);
 
 })();
-
-  // var minusOne = function(index) {
-  //   candy[index].dislikes += 1;
-  // };
-
-
-
-
