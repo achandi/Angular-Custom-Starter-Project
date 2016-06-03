@@ -1,18 +1,8 @@
 (function() { 
 
-  var app = angular.module('candyShop', ['ngRoute']);
+  var app = angular.module('candyShop', []);
 
-  app.config(function($routeProvider) {
-    $routeProvider.when('/', 
-      { controller: 'ShopController',
-        templateUrl: 'index.html'
-      })
-    .when('/orders',
-      {
-        controller: 'OrdersController',
-        templateUrl: 'order.html',
-      });
-  });
+ 
 
   app.controller('ShopController', ['$scope', function($scope){
 
@@ -106,10 +96,6 @@
       } 
     };
 
-    }]);
-
-    app.controller('OrdersController', ['$scope', function($scope){
-    $scope.candies = 5;
     }]);
 
 
