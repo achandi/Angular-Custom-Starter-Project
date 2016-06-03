@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html ng-app="candyShop">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+    <h1> 50cent's Candy Shop </h1>
+    <div ng-controller="ShopController as shop">
+      <h2> Candy List </h2>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="candy in candies">
+          <img ng-src="{{candy.cover}}">
+           <h3> {{candy.type}} </h3>
+           <h3> {{candy.price | currency}} per candy </h3>
+           <section ng-controller"PanelController as Panel">
+             <ul class="nav nav-pills">
+               <li ng-class="{ active:tab === 1 }"> <a href ng-click="tab = 1">Description</a> </li>
+               <li ng-class="{ active:tab === 2 }"> <a href ng-click="tab = 2">Rating</a> </li>
+               <li ng-class="{ active:tab === 3 }"> <a href ng-click="tab = 3">Order</a> </li>   
+          </section>
+          <div class="panel" ng-show="tab === 1">
+            <h4>Description:</h4>
+            <p>{{candy.description}}</p>
+           </div>
+           <div class="panel" ng-show="tab === 2">
+            <h4>Rating:</h4>
+            <p class="likes" ng-click="plusOne($index)"> Likes: {{candy.likes}} </p>
+            <p class="dislikes" ng-click="minusOne($index)"> Dislikes: {{candy.dislikes}}</p>
+          </div>
+          <div class="panel" ng-show="tab === 3">
+          <h4>Availability:</h4>
+          <p>{{candy.quantity}} pieces</p>
+          <div class="container"> 
+          Amount to order: <input type="text" ng-model="order" /> {{ order }} pieces
+          </div>
+          <h3 id="sold_out" ng-show="candy.quantity === 0"> Sold Out </h3>
+           <button ng-show="candy.quantity > 0" ng-click="orderQuantity($index, order)"> Add Candy to Cart </button>
+         </div>
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+
+
+
+
