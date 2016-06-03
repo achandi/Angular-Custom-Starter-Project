@@ -1,6 +1,18 @@
 (function() { 
 
-  var app = angular.module('candyShop', []);
+  var app = angular.module('candyShop', ['ngRoute']);
+
+  app.config(function($routeProvider) {
+    $routeProvider.when('/', 
+      { controller: 'ShopController',
+        templateUrl: 'index.html'
+      })
+    .when('/orders',
+      {
+        controller: 'OrdersController',
+        templateUrl: 'order.html',
+      });
+  });
 
   app.controller('ShopController', ['$scope', function($scope){
 
@@ -90,14 +102,15 @@
     $scope.orderQuantity = function(index, order) {
       if ($scope.candies[index].quantity >= order) {
           $scope.candies[index].quantity -= order;
+          return order * $scope.candies[index].price;
       } 
     };
 
     }]);
 
-    app.controller("PanelController", function() {
-    this.tab = 1;
-    });
+    app.controller('OrdersController', ['$scope', function($scope){
+    $scope.candies = 5;
+    }]);
 
 
 })();

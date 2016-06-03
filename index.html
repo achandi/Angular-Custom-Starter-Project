@@ -13,12 +13,14 @@
     <h1> 50cent's Candy Shop </h1>
     <div ng-controller="ShopController as shop">
       <h2> Candy List </h2>
+      Search: <input type="text" ng-model="searchText" /> {{ searchText }}
+      <br />
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="candy in candies">
+        <li class="list-group-item" ng-repeat="candy in candies | filter:searchText">
           <img ng-src="{{candy.cover}}">
            <h3> {{candy.type}} </h3>
            <h3> {{candy.price | currency}} per candy </h3>
-           <section ng-controller"PanelController as Panel">
+           <section ng-init="tab=1">
              <ul class="nav nav-pills">
                <li ng-class="{ active:tab === 1 }"> <a href ng-click="tab = 1">Description</a> </li>
                <li ng-class="{ active:tab === 2 }"> <a href ng-click="tab = 2">Rating</a> </li>
